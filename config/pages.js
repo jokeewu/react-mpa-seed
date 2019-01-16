@@ -12,17 +12,26 @@ module.exports = [
       keywords: 'React,多页面,MPA',
       author: 'jakcy_coder@163.com'
     },
-    bundleKey: 'index',
+    bundleKey: 'home',
     jsEntry: 'home/index.js',
     htmlEntry: 'index.html'
+  },
+  {
+    title: '例子详情',
+    meta: {
+      description: '这是一个例子详情',
+    },
+    bundleKey: 'example_detail',
+    jsEntry: 'example/detail.js',
+    htmlEntry: 'example/detail.html'
   },
   {
     title: '例子',
     meta: {
       description: '这是一个例子',
     },
-    bundleKey: 'example',
+    bundleKey: 'example_index',
     jsEntry: 'example/index.js',
     htmlEntry: 'example/index.html'
-  }
+  },
 ];

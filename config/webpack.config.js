@@ -30,7 +30,7 @@ const pages = require('./pages');
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
-const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
+// const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
 
 // Check if TypeScript is setup
 const useTypeScript = fs.existsSync(paths.appTsConfig);
@@ -123,9 +123,10 @@ module.exports = function(webpackEnv) {
           title: page.title,
           filename: page.htmlEntry,
           meta: page.meta,
-          inject: true,
+          inject: 'body',
           template: paths.appCommonHtmlTpl,
-          chunks: ['common', page.bundleKey]
+          chunks: ['commons', page.bundleKey],
+          // baseUrl: '../'
         },
         isEnvProduction
           ? {
@@ -181,7 +182,7 @@ module.exports = function(webpackEnv) {
         : isEnvDevelopment && 'static/js/[name].chunk.js',
       // We inferred the "public path" (such as / or /my-project) from homepage.
       // We use "/" in development.
-      publicPath: publicPath,
+      // publicPath: publicPath,
       // Point sourcemap entries to original disk location (format as URL on Windows)
       devtoolModuleFilenameTemplate: isEnvProduction
         ? info =>
@@ -257,11 +258,11 @@ module.exports = function(webpackEnv) {
       // Automatically split vendor and commons
       // https://twitter.com/wSokra/status/969633336732905474
       // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+      // https://webpack.js.org/plugins/split-chunks-plugin/
       splitChunks: {
-        // TODO:
         cacheGroups: {
-          common: {
-            name: 'common',
+          commons: {
+            name: 'commons',
             chunks: 'initial',
             minChunks: 2
           }
@@ -504,9 +505,9 @@ module.exports = function(webpackEnv) {
 
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
-      isEnvProduction &&
-        shouldInlineRuntimeChunk &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
+      // isEnvProduction &&
+      //   shouldInlineRuntimeChunk &&
+      //   new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
       // Makes some environment variables available in index.html.
       // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
       // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">

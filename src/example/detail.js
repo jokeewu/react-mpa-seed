@@ -3,6 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <div>Example Index</div>,
+  <div>Example Detail</div>,
   document.getElementById('root')
 );
