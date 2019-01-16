@@ -1,6 +1,51 @@
 # React 多页面开发种子项目
 
-本项目基于create-react-app脚手架创建，针对`React多页面`开发做了配置上的修改。
+本项目基于[create-react-app](https://github.com/facebook/create-react-app)脚手架创建，针对`React多页面`开发做了配置上的修改。
+
+## 添加页面
+
+### 目录结构
+
+在`src`目录增加一个feature目录，如：`example`，增加页面`index.js`，如下:
+
+<pre>
+src
+  example
+    index.js
+</pre>
+
+页面内容如下:
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  <div>This is an example.</div>,
+  document.getElementById('root')
+);
+```
+
+### 注册页面
+
+打开`config/pages.js`，增加如下配置:
+
+```javascript
+module.exports = [
+  // ...
+  {
+    title: '例子',
+    meta: {
+      keywords: 'React,MPA,多页面',
+      description: '这是一个例子',
+      // 详见: https://github.com/jantimon/html-webpack-plugin
+    },
+    bundleKey: 'example',
+    jsEntry: 'example/index.js',
+    htmlEntry: 'example/index.html'
+  },
+];
+```
 
 ## 可用命令
 
