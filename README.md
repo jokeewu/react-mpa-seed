@@ -4,7 +4,7 @@
 
 ## 可用命令
 
-在当前目录下，你可以运行以下命令：
+在项目（当前）目录下，你可以运行以下命令：
 
 ```shell
 > npm install # 安装项目依赖
@@ -26,4 +26,5 @@
 4. 修改`webpack.config.js`中`optimization.splitChunks`;
 4. 为了满足生产构建`publicUrl`采用相对路径，将`package.json`中`homepage`字段及`webpack.config.js`中`output.publicPath`配置删除，以便于`HtmlWebpackPlugin`插件自动采用相对路径。但`InlineChunkHtmlPlugin`插件的使用会报错(`endsWith readable error`)，故去掉`InlineChunkHtmlPlugin`插件使用;
 5. 增加`src`目录别名`@`;
-6. 修改`config/webpackDevServer.config.js`中`historyApiFallback: false`。
+6. 修改`config/webpackDevServer.config.js`中`historyApiFallback: false`;
+7. 移除`scripts/build.js`,`scripts/start.js`中`checkRequiredFiles`文件检查。
