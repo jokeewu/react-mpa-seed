@@ -7,7 +7,7 @@ const resolve = require('resolve');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+// const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -64,7 +64,7 @@ module.exports = function(webpackEnv) {
     ? publicPath.slice(0, -1)
     : isEnvDevelopment && '';
   // Get environment variables to inject into our app.
-  const env = getClientEnvironment(publicUrl);
+  const env = getClientEnvironment();
 
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -125,8 +125,7 @@ module.exports = function(webpackEnv) {
           meta: page.meta,
           inject: 'body',
           template: paths.appCommonHtmlTpl,
-          chunks: ['commons', page.bundleKey],
-          // baseUrl: '../'
+          chunks: ['commons', page.bundleKey]
         },
         isEnvProduction
           ? {
@@ -175,7 +174,7 @@ module.exports = function(webpackEnv) {
       // In development, it does not produce real files.
       filename: isEnvProduction
         ? 'static/js/[name].[chunkhash:8].js'
-        : isEnvDevelopment && 'static/js/bundle.js',
+        : isEnvDevelopment && 'static/js/[name].js',
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
         ? 'static/js/[name].[chunkhash:8].chunk.js'

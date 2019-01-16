@@ -17,6 +17,15 @@ module.exports = [
     htmlEntry: 'index.html'
   },
   {
+    title: '例子',
+    meta: {
+      description: '这是一个例子',
+    },
+    bundleKey: 'example',
+    jsEntry: 'example/index.js',
+    htmlEntry: 'example/index.html'
+  },
+  {
     title: '例子详情',
     meta: {
       description: '这是一个例子详情',
@@ -24,14 +33,5 @@ module.exports = [
     bundleKey: 'example_detail',
     jsEntry: 'example/detail.js',
     htmlEntry: 'example/detail.html'
-  },
-  {
-    title: '例子',
-    meta: {
-      description: '这是一个例子',
-    },
-    bundleKey: 'example_index',
-    jsEntry: 'example/index.js',
-    htmlEntry: 'example/index.html'
   },
 ];
