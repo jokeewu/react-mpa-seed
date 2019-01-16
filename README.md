@@ -1,6 +1,6 @@
 # React 多页面开发种子项目
 
-本项目基于create-react-app创建，针对多页面开发做了配置上的修改
+本项目基于create-react-app脚手架创建，针对`React多页面`开发做了配置上的修改。
 
 ## 可用命令
 
