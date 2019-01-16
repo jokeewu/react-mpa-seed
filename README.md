@@ -6,21 +6,17 @@
 
 在当前目录下，你可以运行以下命令：
 
-### npm install
+```shell
+> npm install # 安装项目依赖
 
-安装项目依赖
+> npm run start # 启动项目在本地运行
 
-### `npm start`
+> npm run test # 测试项目
 
-启动项目在本地运行
+> npm run build # 构建/编译项目
+```
 
-### `npm test`
-
-测试项目
-
-### `npm run build`
-
-构建
+执行`npm run build`后，会在项目目录生成`build`目录用于发布。
 
 ## 修改配置
 
